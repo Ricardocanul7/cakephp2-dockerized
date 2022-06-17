@@ -1,0 +1,47 @@
+services:
+  php:
+    container_name: cake2_php56
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    volumes:
+      - .:/var/www/myapp
+    networks:
+      - cake2_network
+
+  nginx:
+    container_name: cake2_nginx
+    image: nginx:1.22.0-alpine
+    volumes:
+      - ./docker/nginx/config/default.conf:/etc/nginx/conf.d/default.conf
+      - .:/var/www/myapp
+    ports:
+      - 80:80
+    networks:
+      - cake2_network
+
+  db:
+    container_name: cake2_db
+    image: mysql:5.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=app_db
+      - MYSQL_USER=cake2
+      - MYSQL_PASSWORD=12345
+    volumes:
+      - data-db:/var/lib/mysql
+      - ./app/docker/db:/dumps
+    ports:
+      - 3306:3306
+    command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]
+    networks:
+      - cake2_network
+
+
+volumes:
+    data-db:
+        name: cake2_db
+
+networks:
+  cake2_network:
+    name: cake2_network
