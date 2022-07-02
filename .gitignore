@@ -5,6 +5,8 @@
 /lib/Cake/Console/Templates/skel/tmp/
 /plugins
 /vendors
+/vendor/
+/Plugin
 /build
 /dist
 /tags
