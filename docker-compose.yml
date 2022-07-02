@@ -9,12 +9,16 @@ services:
     networks:
       - cake2_network
 
-  nginx:
-    container_name: cake2_nginx
-    image: nginx:1.22.0-alpine
+  apache:
+    container_name: cake2_apache2
+    image: httpd:2.4-alpine
+    depends_on:
+      - php
+      - db
     volumes:
-      - ./docker/nginx/config/default.conf:/etc/nginx/conf.d/default.conf
-      - .:/var/www/myapp
+      - ./docker/apache/config/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./docker/apache/config/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+      - .:/var/www/myapp/
     ports:
       - 80:80
     networks:
