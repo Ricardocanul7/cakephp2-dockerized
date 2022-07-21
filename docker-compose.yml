@@ -1,9 +1,9 @@
 services:
   php:
-    container_name: cake2_php56
+    container_name: cake2_php
     build:
       context: .
-      dockerfile: docker/php/Dockerfile
+      dockerfile: docker/php7/Dockerfile
     volumes:
       - .:/var/www/myapp
     networks:
@@ -30,7 +30,7 @@ services:
       - MYSQL_PASSWORD=12345
     volumes:
       - data-db:/var/lib/mysql
-      - ./app/docker/db:/dumps
+      # - ./app/docker/db:/dumps
     ports:
       - 3306:3306
     command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]
