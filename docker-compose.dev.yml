@@ -1,10 +1,11 @@
+# Docker compose file for development environment
+
 services:
   php:
     container_name: cake2_php
     build:
       context: .
-      # dockerfile: docker/php5/Dockerfile
-      dockerfile: docker/php7/Dockerfile
+      dockerfile: docker/php${PHP_VERSION:-5}/Dockerfile
     volumes:
       - .:/var/www/myapp
     networks:
@@ -25,10 +26,11 @@ services:
     container_name: cake2_db
     image: mysql:5.6
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=app_db
-      - MYSQL_USER=cake2
-      - MYSQL_PASSWORD=12345
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-root}
+      - MYSQL_DATABASE=${DB_DATABASE:-cakephp2}
+      - MYSQL_USER=${DB_USERNAME:-cakephp2}
+      - MYSQL_PASSWORD=${DB_PASSWORD:-cakephp2}
+
     volumes:
       - data-db:/var/lib/mysql
       # - ./app/docker/db:/dumps
