@@ -3,6 +3,7 @@ services:
     container_name: cake2_php
     build:
       context: .
+      # dockerfile: docker/php5/Dockerfile
       dockerfile: docker/php7/Dockerfile
     volumes:
       - .:/var/www/myapp
