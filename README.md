@@ -75,3 +75,13 @@ and then execute `make docker-restart`.
 Execute `make help` and you will see the list of custom commands.
 
 > NOTE: You can modify the Makefile to add your custom commands or improve existing ones.
+
+## Windows users
+
+Windows doesn't have `make` installed by default as MacOS or Linux
+
+A solution for this is to install chocolately from [Chocolatey](https://chocolatey.org/install)
+
+Once `chocolately` is installed, install the `make` package with the following instruction: `choco install make`
+
+So after that you will be able to run the commands in the makefile using Git Bash or Powershell
