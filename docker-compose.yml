@@ -43,7 +43,7 @@ services:
 
 volumes:
     data-db:
-        name: cake2_db
+        name: ${DB_VOLUME_NAME:-cakephp2}
 
 networks:
   cake2_network:
