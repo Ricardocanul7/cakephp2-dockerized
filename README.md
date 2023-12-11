@@ -78,10 +78,6 @@ Execute `make help` and you will see the list of custom commands.
 
 ## Windows users
 
-Windows doesn't have `make` installed by default as MacOS or Linux
+To run docker commands use Windows Terminal with WSL2
 
-A solution for this is to install chocolately from [Chocolatey](https://chocolatey.org/install)
-
-Once `chocolately` is installed, install the `make` package with the following instruction: `choco install make`
-
-So after that you will be able to run the commands in the makefile using Git Bash or Powershell
+execute `sudo apt install make` to install make and be able to run make commands
