@@ -1,7 +1,7 @@
 ### DOCKER CONFIGURATION FOR CakePHP 2
 
 ## Technology stack:
-- PHP 5.6 || PHP 7.1
+- PHP 5.6 || PHP 7.4
 - MySQL 5.6
 - NGINX 1.22
 
