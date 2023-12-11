@@ -1,6 +1,10 @@
-FROM php:7.1-fpm-alpine
+FROM php:7.4-fpm-alpine
 
 LABEL maintainer='Ricardo Canul ricardocanul7@gmail.com'
+
+RUN addgroup -g 1000 dev-user \
+    && adduser -G dev-user -u 1000 dev-user -D
+
 
 RUN apk --no-cache add \
 	icu-dev \
@@ -24,9 +28,9 @@ RUN docker-php-ext-install intl \
 	&& docker-php-ext-install bcmath \
     && docker-php-ext-install curl \
     && docker-php-ext-install pdo \
-	&& docker-php-ext-install pdo_mysql \
-	&& docker-php-ext-configure mcrypt \
-	&& docker-php-ext-install mcrypt
+	&& docker-php-ext-install pdo_mysql
+
+RUN pecl install mcrypt
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
