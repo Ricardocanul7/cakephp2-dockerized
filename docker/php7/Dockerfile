@@ -18,7 +18,7 @@ RUN apk --no-cache add \
 # Installing this packages will improve speed when installing php extensions
 RUN apk --no-cache add \
 	gcc g++ autoconf m4 libbz2 perl dpkg-dev dpkg libmagic file \
-	libgcc libstdc++ binutils gmp isl libgomp libatomic mpfr3 mpc1 gcc musl-dev \
+	libgcc libstdc++ binutils gmp isl libgomp libatomic mpc1 gcc musl-dev \
 	libc-dev make re2c
 
 RUN docker-php-ext-install intl \
